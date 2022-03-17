@@ -35,12 +35,12 @@ cvfit1 <- cv.glmnet(x1,y1,family="cox", type.measure="C")
 plot(cvfit1)
 
 #find optimal lambda (where CV-error curve hits its minimum)
-lam<-cvfit1$lambda.se
+lam<-cvfit1$lambda.min
 lam
 coef(fit1, s=lam)
 
 #find lambda for regularized model with CV-error within 1 st.dev of min
-lam_se<-cvfit1$lambda.min
+lam_se<-cvfit1$lambda.1se
 lam_se
 coef(fit1, s=lam_se)
 
